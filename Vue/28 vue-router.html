@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <style>
+        body {
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="row">
+        <div class="col-xs-8 offset-2">
+            <div class="page-header">
+                <h1>IT education</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 offset-2"> <!--需要使用offset-2才行-->
+            <div class="list-group">
+                <router-link class="list-group-item" to="/h5">HTML5 college</router-link>
+                <router-link class="list-group-item" to="/java">Java college</router-link>
+                <router-link class="list-group-item" to="/python">Python college</router-link>
+                <router-link class="list-group-item" to="/nodejs">Nodejs college</router-link>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel">
+                <div class="panel-body">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<template id="h5">
+    <div>
+        <h2>HTML5 college</h2>
+        <p>HTML5 is your best choice!</p>
+        <img src="img/1.jpg" width="200">
+    </div>
+
+</template>
+<template id="java">
+    <div>
+        <h2>Java college</h2>
+        <p>Java is your best choice!</p>
+        <img src="img/2.jpg" width="200">
+    </div>
+
+</template>
+<template id="python">
+    <div>
+        <h2>Python college</h2>
+        <p>Python is your best choice!</p>
+        <img src="img/3.jpg" width="200">
+    </div>
+
+</template>
+<template id="nodejs">
+    <div>
+        <h2>Nodejs college</h2>
+        <p>Nodejs is your best choice!</p>
+        <img src="img/4.jpg" width="200">
+    </div>
+
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+//创建组件
+
+const h5=Vue.extend({
+    template: '#h5',
+});
+const java=Vue.extend({
+    template: '#java',
+});
+
+const python=Vue.extend({
+    template: '#python',
+});
+const nodejs=Vue.extend({
+    template: '#nodejs',
+});
+//2. 定义路由
+    const routes =[
+        {path:'/h5', component:h5},
+        {path:'/java',component:java},
+        {path:'/python',component:python},
+        {path:'/nodejs',component:nodejs},
+        {path:'/',redirect:'/h5'}
+];
+    //3.创建路由实例
+    const router=new VueRouter({
+    routes
+});
+    //4.创建vue实例并挂载
+    new Vue({
+      router
+    }).$mount('#app')
+</script>
+</body>
+</html>

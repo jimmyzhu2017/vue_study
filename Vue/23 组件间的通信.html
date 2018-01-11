@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <my-div v-for="mes in messages" :key="mes.id" v-bind:message="mes.message" v-bind:imgsrc="mes.imgsrc"></my-div>
+    <!--<my-div message="it is sunning" imgsrc="img/2.jpg"></my-div>-->
+
+</div>
+<template id="my_div">
+    <div>
+        <h1>{{message}}</h1>
+        <img :src="imgsrc" width="200" alt="">
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('my-div',{
+        template: '#my_div',
+        props: ['message','imgsrc']
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            messages: [
+                {message:'it is raining',imgsrc:'img/1.jpg'},
+                {message:'it is sunning',imgsrc:'img/2.jpg'},
+                ],
+
+        }
+    });
+</script>
+</body>
+</html>

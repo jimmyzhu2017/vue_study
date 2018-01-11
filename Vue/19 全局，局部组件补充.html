@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<my-date></my-date>
+<my-c></my-c>
+</div>
+<div id="app1">
+    <my-date></my-date>
+
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('my-date', {
+        template:`
+<div>
+    <input type="date">
+    <p>it is winter</p>
+</div>
+`
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            msg: ''
+        },
+        components: {
+            'my-c':{
+                template:`
+                <div>
+                    <input type="color">
+                    <p>color</p>
+                </div>
+                `
+            }
+        }
+    });
+    new Vue({
+        el: '#app1',
+        data: {
+            msg: ''
+        }
+    });
+</script>
+</body>
+</html>

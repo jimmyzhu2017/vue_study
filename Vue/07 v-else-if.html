@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>jimmy's grade is</span> //span不换行 p标签会换行
+    <span v-if="score>=90">A</span>
+    <span v-else-if="score>=80">B</span>
+    <span v-else-if="score>=70">C</span>
+    <span v-else-if="score>=60">D</span>
+    <span v-else>E</span></br>
+    <input type="text" v-model="score">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            score: 90
+        }
+    });
+</script>
+</html>

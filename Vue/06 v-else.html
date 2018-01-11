@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="height>1.7">jimmy's height is {{height}} m</p>
+    <p v-else>jimmy's height is less than 1.7 m</p>
+    <input type="text" v-model="height">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            height: 1.67
+        }
+    });
+</script>
+</body>
+</html>

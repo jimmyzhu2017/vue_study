@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-show="show">display</p>
+    <p v-show="hide">don't display</p>
+    <p v-show="high>1.7">jimmy's high is: {{high}}</p>
+    <input type="text" v-model="high">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+            hide: false,
+            high: 1.67
+        }
+    });
+</script>
+</body>
+</html>

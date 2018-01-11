@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            margin: 0px auto;
+            width: 600px;
+        }
+        fieldset{
+            border: 1px solid orange;
+
+
+            margin-bottom: 30px;
+
+        }
+        fieldset input {
+            width: 400px;
+            height: 20px;
+            margin: 0px ;
+
+
+        }
+
+        table{
+            width: 600px;
+            margin: 0px;
+            border: 2px solid orange;
+            text-align: left;
+        }
+        thead{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <fieldset>
+        <legend>姆指哥成绩录入系统</legend>
+
+        <table style="width: 500px; border: 0px">
+            <tbody>
+            <tr>
+                <td width="50px">Name</td>
+                <td>
+                    <input type="text" v-model="new_student.name" placeholder="please enter name">
+                </td>
+            </tr>
+            <tr>
+                <td  width="50px">Age</td>
+                <td>
+                    <input type="text" v-model="new_student.age" placeholder="please enter age">
+                </td>
+            </tr>
+            <tr>
+                <td  width="50px">Sex</td>
+                <td>
+                    <select v-model="new_student.sex">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td  width="50px">Phone</td>
+                <td>
+                    <input type="text" v-model="new_student.phone" placeholder="please enter phone number">
+                </td>
+            </tr>
+            <tr>
+                <td  width="50px"></td>
+                <td style="text-align: right">
+                    <button @click="addNew()">Save</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+    <table>
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Sex</td>
+            <td>Phone</td>
+            <td>Delete</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(p,index) in persons">      <!--  tr 表格内的一行 td：列-->
+            <td>{{p.name}}</td>
+            <td>{{p.age}}</td>
+            <td>{{p.sex}}</td>
+            <td>{{p.phone}}</td>
+            <td>
+                <button @click="del(index)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            persons: [
+                {name: 'jimmy',age:50,sex:'male',phone:'130002323432'},
+                {name: 'gray',age:30,sex:'male', phone:'130132323432'},
+                {name: 'ava',age:25,sex:'female',phone:'133213233432'},
+                {name: 'jim',age:45,sex:'male',  phone:'130011232132'},
+            ],
+            new_student: {name: '',age:'',sex:'male',  phone:''}
+        },
+        methods: {
+            //del a record
+            del(index){
+               // alert('del'+index);
+                this.persons.splice(index,1);
+            },
+            //add a new student
+            addNew(){
+                // check invalid input
+                if (this.new_student.name===''){
+                    alert('the name can not be empty!');
+                    return;
+                }
+                if (this.new_student.age<=0){
+                    alert('please input correct age !');
+                    return;
+                }
+                if (this.new_student.phone===''){
+                    alert('the phone can not be empty!');
+                    return;
+                }
+              //  alert('add');
+                this.persons.unshift(this.new_student); //unshift放到数组的最前面
+                //清空数据
+                this.new_student={name: '',age:0,sex:'male',  phone:''};
+            }
+        }
+    });
+</script>
+</body>
+</html>
